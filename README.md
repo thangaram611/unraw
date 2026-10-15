@@ -6,19 +6,19 @@ GitHub shows HTML files as source. The usual workarounds either only work for pu
 
 ## Install
 
-1. Install a userscript manager, once:
-   - Chrome, Edge, Brave, Opera: [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/)
-   - Firefox: [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/)
-   - Safari (Mac, iPhone, iPad): [Userscripts](https://apps.apple.com/app/userscripts/id1463298887)
-2. Install unraw from either source:
+Three ways, pick one:
+
+1. **Bookmarklet, nothing to install.** Go to **https://thangaram611.github.io/unraw/** and drag the button to your bookmarks bar. Works in Chrome, Edge, Brave, Firefox, Safari and Opera. (A bookmarklet is a bookmark that holds a tiny program; the page shows the code and a copy fallback for phones.)
+2. **Userscript**, for an **unraw** button on the page itself. Install a manager once (Chrome, Edge, Brave, Opera, Firefox: [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/); Safari on Mac, iPhone, iPad: [Userscripts](https://apps.apple.com/app/userscripts/id1463298887)), then install from either source:
    - Greasy Fork: https://greasyfork.org/scripts/600316-unraw (updates handled by Greasy Fork)
    - GitHub: https://raw.githubusercontent.com/thangaram611/unraw/main/unraw.user.js (updates via `@updateURL`)
 
    Your manager opens an install dialog showing the full source. Read it; it is about 80 lines.
+3. **Browser extension**, one-click from the Chrome Web Store, Firefox Add-ons and Edge Add-ons: coming.
 
 ## Use
 
-Open any `.html` file on GitHub. An **unraw** button appears next to **Raw**. Click it: the rendered page opens in a new tab. Works on every branch, commit and tag, and in every repository your account can read.
+Open any `.html` file on GitHub. With the userscript, an **unraw** button appears next to **Raw**; with the bookmarklet, click the bookmark. Either way the rendered page opens in a new tab. Works on every branch, commit and tag, and in every repository your account can read.
 
 ## How it works
 

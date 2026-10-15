@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>unraw · render GitHub HTML files, privately</title>
+<meta name="description" content="One click renders any .html file on GitHub in your browser. Works on private repositories you can read. No servers, no tokens.">
+<style>
+  :root{--bg:#f6f8fa;--paper:#ffffff;--ink:#1f2328;--muted:#59636e;--line:#d1d9e0;--accent:#1f883d;--accent-ink:#ffffff;--blue:#0969da;--chip:#eef1f4}
+  @media (prefers-color-scheme: dark){:root{--bg:#0d1117;--paper:#161b22;--ink:#e6edf3;--muted:#9198a1;--line:#30363d;--accent:#238636;--accent-ink:#ffffff;--blue:#4493f8;--chip:#21262d}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+  main{max-width:720px;margin:0 auto;padding:48px 20px 80px}
+  h1{font-size:40px;margin:0 0 6px;letter-spacing:-.02em}
+  .tag{color:var(--muted);font-size:18px;margin:0 0 32px;max-width:60ch}
+  h2{font-size:20px;margin:40px 0 8px}
+  p{margin:8px 0;max-width:66ch}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:14px 0}
+  .card.primary{border-color:var(--accent)}
+  .drag{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:12px 0 6px}
+  a.bm{display:inline-block;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;font-size:18px;padding:12px 22px;border-radius:8px;border:1px solid transparent;cursor:grab;user-select:none}
+  a.bm:active{cursor:grabbing}
+  .hint{color:var(--muted);font-size:15px}
+  .steps{margin:8px 0 0 18px;padding:0}
+  .steps li{margin:4px 0}
+  .copy{display:flex;gap:8px;align-items:stretch;margin:10px 0 0}
+  .copy input{flex:1;min-width:0;font:13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--chip);color:var(--ink)}
+  .copy button{font:600 14px inherit;padding:8px 14px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);cursor:pointer}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:560px){.opts{grid-template-columns:1fr}}
+  .opt a.btn{display:inline-block;margin-top:8px;padding:7px 12px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);text-decoration:none;font-weight:600;font-size:14px}
+  .opt a.btn:hover{border-color:var(--blue)}
+  code{font:13.5px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--chip);padding:1px 5px;border-radius:4px}
+  ul{max-width:66ch}
+  footer{margin-top:48px;color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:14px}
+  a{color:var(--blue)}
+  .only-touch{display:none}
+  @media (hover:none) and (pointer:coarse){.only-touch{display:block}.only-mouse{display:none}}
+</style>
+</head>
+<body>
+<main>
+  <h1>unraw</h1>
+  <p class="tag">Un-raw your GitHub HTML files. One click renders any <code>.html</code> file on GitHub in your browser, privately. Works on private repositories you can read, on any branch. No servers, no tokens, nothing leaves your browser.</p>
+
+  <div class="card primary">
+    <h2 style="margin-top:0">Install in one move: the bookmarklet</h2>
+    <p>Nothing to install, no account, no extension. It is a bookmark that holds a tiny program instead of an address. Click it while looking at an HTML file on GitHub and the rendered page opens in a new tab.</p>
+    <div class="drag only-mouse">
+      <a class="bm" id="bookmarklet" href="#" title="Drag me to your bookmarks bar">unraw</a>
+      <div class="hint">← <b>Drag this button to your bookmarks bar.</b><br>Chrome, Edge, Brave, Firefox, Safari, Opera. If the bar is hidden: <code>Ctrl/Cmd + Shift + B</code>. Firefox also accepts right-click → "Bookmark Link".</div>
+    </div>
+    <div class="only-touch">
+      <p><b>On a phone or tablet:</b> bookmark this page, then edit the bookmark and replace its address with the text below.</p>
+    </div>
+    <details style="margin-top:10px">
+      <summary class="hint">Can't drag? Copy the address and create the bookmark by hand.</summary>
+      <div class="copy"><input id="code" readonly aria-label="bookmarklet code"><button id="copy" type="button">Copy</button></div>
+      <ol class="steps hint">
+        <li>Right-click the bookmarks bar → "Add page…" (Chrome, Edge, Brave) or "New Bookmark…" (Firefox).</li>
+        <li>Name it <code>unraw</code>, paste the copied text as the URL, save.</li>
+      </ol>
+    </details>
+    <p class="hint" style="margin-top:12px">Then open any <code>.html</code> file on GitHub and click the bookmark.</p>
+  </div>
+
+  <h2>Prefer a button on the page itself?</h2>
+  <div class="opts">
+    <div class="card opt">
+      <b>Userscript</b>
+      <p class="hint">Adds an <b>unraw</b> button beside <b>Raw</b> on every HTML file page. Needs a userscript manager (Tampermonkey, Violentmonkey, or the Userscripts app on Safari). Updates automatically.</p>
+      <a class="btn" href="https://greasyfork.org/scripts/600316-unraw">Install from Greasy Fork</a>
+      <a class="btn" href="https://raw.githubusercontent.com/thangaram611/unraw/main/unraw.user.js">Install from GitHub</a>
+    </div>
+    <div class="card opt">
+      <b>Browser extension</b>
+      <p class="hint">One-click install from the Chrome Web Store, Firefox Add-ons and Edge Add-ons. Coming; the listings will appear here.</p>
+      <a class="btn" href="https://github.com/thangaram611/unraw">Follow on GitHub</a>
+    </div>
+  </div>
+
+  <h2>How it works</h2>
+  <ul>
+    <li>On a file page (<code>github.com/&lt;owner&gt;/&lt;repo&gt;/blob/&lt;ref&gt;/&lt;file&gt;.html</code>) it fetches the same path with <code>/blob/</code> replaced by <code>/raw/</code>. GitHub serves it with your own session, exactly as the <b>Raw</b> button does; for private files that is a short-lived redirect.</li>
+    <li>The text goes into a local <code>blob:</code> URL, which your browser renders like any page.</li>
+    <li>No request goes anywhere but GitHub. No token is typed, stored or sent. Nothing is logged.</li>
+  </ul>
+
+  <h2>Limitations</h2>
+  <ul>
+    <li>Pages that reference <b>relative</b> files (<code>./style.css</code>, <code>img/x.png</code>) render without them; self-contained pages (inline CSS, inline SVG, data URLs, absolute links) render completely.</li>
+    <li>Inline scripts run inside the <code>blob:</code> page, isolated from GitHub. Treat a preview the way you would treat opening a downloaded file.</li>
+  </ul>
+
+  <footer>
+    <a href="https://github.com/thangaram611/unraw">Source on GitHub</a> · <a href="https://greasyfork.org/scripts/600316-unraw">Greasy Fork</a> · MIT License · by thangaram611
+  </footer>
+</main>
+<script>
+  // The bookmarklet. Kept here once so the drag link and the copy box can never drift apart.
+  const code = "javascript:(()=>{if(!/\\/blob\\//.test(location.pathname)||!/\\.html?$/i.test(location.pathname)){alert('unraw: open an .html file page on GitHub first.');return}const t=window.open('','_blank');if(!t)return;const p=t.document.createElement('p');p.style.cssText='font:15px system-ui,sans-serif;padding:24px';p.textContent='unraw: fetching the file from GitHub\\u2026';t.document.body.appendChild(p);t.document.title='unraw';fetch(location.pathname.replace('/blob/','/raw/')).then(r=>{if(!r.ok)throw new Error('GitHub answered '+r.status);return r.text()}).then(h=>{t.location.href=URL.createObjectURL(new Blob([h],{type:'text/html'}))}).catch(e=>{p.textContent='unraw could not fetch this file ('+e.message+'). Are you signed in to GitHub with access to this repository?'})})();";
+  const link = document.getElementById('bookmarklet');
+  link.setAttribute('href', code);
+  link.addEventListener('click', e => { e.preventDefault(); alert('Drag this button to your bookmarks bar, then click it on a GitHub HTML file page.'); });
+  const box = document.getElementById('code');
+  box.value = code;
+  document.getElementById('copy').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(code); } catch { box.select(); document.execCommand('copy'); }
+    const b = document.getElementById('copy'); b.textContent = 'Copied'; setTimeout(() => { b.textContent = 'Copy'; }, 1500);
+  });
+</script>
+</body>
+</html>
