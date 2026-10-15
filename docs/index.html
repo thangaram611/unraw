@@ -78,6 +78,12 @@
     </div>
   </div>
 
+  <h2>Why unraw, and not the others</h2>
+  <div class="card">
+    <p>Other tools that preview HTML from private GitHub repositories make your file pass through a third party: one sends your GitHub token to its author's server and renders on the author's domain; another hands a tokenised link to your private file to its author's website; the public-only ones cannot read private repositories at all.</p>
+    <p><b>unraw has one rule: the file may not leave your browser.</b> It does what the Raw button does, with your own GitHub session, and renders locally. No server, no token, no account, no site other than github.com in the path. Full comparison in the <a href="https://github.com/thangaram611/unraw#why-unraw-exists">README</a>.</p>
+  </div>
+
   <h2>How it works</h2>
   <ul>
     <li>On a file page (<code>github.com/&lt;owner&gt;/&lt;repo&gt;/blob/&lt;ref&gt;/&lt;file&gt;.html</code>) it fetches the same path with <code>/blob/</code> replaced by <code>/raw/</code>. GitHub serves it with your own session, exactly as the <b>Raw</b> button does; for private files that is a short-lived redirect.</li>
