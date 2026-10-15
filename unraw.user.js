@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         unraw
 // @namespace    https://github.com/thangaram611/unraw
-// @version      1.0.0
+// @version      1.0.1
 // @description  Un-raw your GitHub HTML files: one click renders any .html file on GitHub in your browser, privately. Works on private repositories you can read, on any branch. No servers, no tokens, nothing leaves your browser.
 // @author       thangaram611
 // @license      MIT
@@ -73,9 +73,17 @@
     button.id = BUTTON_ID;
     button.type = 'button';
     button.className = raw.className;
-    button.textContent = 'Preview';
+    // GitHub sizes its buttons through data attributes, not only classes; copy them so the
+    // new button is the same height as Raw and sits flush in the group.
+    for (const { name, value } of raw.attributes) {
+      if (name.startsWith('data-') && name !== 'data-testid') button.setAttribute(name, value);
+    }
+    button.textContent = 'unraw';
     button.title = 'unraw: render this HTML file in a new tab (nothing leaves your browser)';
-    button.addEventListener('click', open);
+    button.addEventListener('click', event => {
+      event.currentTarget.blur(); // no lingering focus ring after the new tab opens
+      open();
+    });
     wrapper.appendChild(button);
     group.parentElement.insertBefore(wrapper, group);
   };

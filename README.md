@@ -18,7 +18,7 @@ GitHub shows HTML files as source. The usual workarounds either only work for pu
 
 ## Use
 
-Open any `.html` file on GitHub. A **Preview** button appears next to **Raw**. Click it: the rendered page opens in a new tab. Works on every branch, commit and tag, and in every repository your account can read.
+Open any `.html` file on GitHub. An **unraw** button appears next to **Raw**. Click it: the rendered page opens in a new tab. Works on every branch, commit and tag, and in every repository your account can read.
 
 ## How it works
 
