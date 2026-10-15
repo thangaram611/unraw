@@ -2,7 +2,28 @@
 
 **Un-raw your GitHub HTML files.** One click renders any `.html` file on GitHub in your browser, privately. Works on private repositories you can read, on any branch. No servers, no tokens, nothing leaves your browser.
 
-GitHub shows HTML files as source. The usual workarounds either only work for public repositories, or route your GitHub token and your private files through someone else's server. unraw does neither: it uses the GitHub session you already have, the same way the **Raw** button does, and renders the file locally.
+Install page: **https://thangaram611.github.io/unraw/**
+
+## Why unraw exists
+
+GitHub shows HTML files as source. Every existing way around that either works only on public repositories, or makes your private file pass through a third party:
+
+- The **Github Html Preview** Chrome extension sends your GitHub token (a personal access token, or an OAuth grant with full `repo` scope) to the author's server, which fetches your file and renders it on the author's domain.
+- The **GitHub Preview** userscript resolves the short-lived tokenised link GitHub issues for a private file and passes that link, as a URL parameter, to the author's website, which then loads your file. The link to your private file ends up in that site's address bar, history and hosting logs.
+- **htmlpreview** and its forks proxy the raw file and cannot read private repositories at all.
+
+unraw was written from scratch with one rule: **the file may not leave your browser.** It does the same thing the **Raw** button does, with your own GitHub session, and renders the result locally from a `blob:` URL. There is no server to trust, no token to paste, no account to create, and no site other than github.com in the whole path. It is about 80 lines; read them in the install dialog.
+
+| | unraw | Github Html Preview (extension) | GitHub Preview (userscript) | htmlpreview |
+| --- | --- | --- | --- | --- |
+| Private repositories | Yes, with your existing GitHub login | Yes, with your token | Yes | No |
+| Where the page renders | Your browser, local `blob:` URL | Author's domain | Author's website | htmlpreview.github.io |
+| What leaves your browser | Nothing beyond GitHub's own Raw request | Your token and your file, via the author's server | A tokenised link to your private file, to the author's site | The public file |
+| Account or token needed | None | Token or OAuth grant | None | None |
+| Works with nothing installed | Yes (bookmarklet) | No | No | No |
+| Licence | MIT | MIT | GPL-3.0 | Public domain |
+
+The other tools are honest projects and some predate this one; the idea of a button beside **Raw** is theirs. The privacy design is the reason unraw exists, and anything that would need a server or a token will not be added to it.
 
 ## Install
 
@@ -38,11 +59,11 @@ Open any `.html` file on GitHub. With the userscript, an **unraw** button appear
 - Inline scripts run inside the `blob:` page, isolated from GitHub. Treat a preview the way you would treat opening the file from a download.
 - GitHub changes its page layout now and then. If the button disappears, the fetch still works; open an issue.
 
-## Alternatives, honestly
+## Credits
 
-- [GitHub Html Preview](https://github.com/dohyeon5626/github-html-preview-extension) (Chrome extension): for private repositories it sends your GitHub token to the author's server and renders the page on the author's domain.
-- [GitHub Preview (UserScript)](https://greasyfork.org/scripts/577730) by PRO-2684 (GPL-3.0): similar idea, resolves the raw redirect with a HEAD request and previews HTML and media.
-- [htmlpreview](https://htmlpreview.github.io/): public repositories only.
+- [Github Html Preview](https://github.com/dohyeon5626/github-html-preview-extension) by dohyeon5626 (MIT)
+- [GitHub Preview (UserScript)](https://greasyfork.org/scripts/577730) by PRO-2684 (GPL-3.0)
+- [htmlpreview](https://htmlpreview.github.io/)
 
 ## License
 
