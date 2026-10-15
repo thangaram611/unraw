@@ -11,7 +11,7 @@ GitHub shows HTML files as source. The usual workarounds either only work for pu
    - Firefox: [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/)
    - Safari (Mac, iPhone, iPad): [Userscripts](https://apps.apple.com/app/userscripts/id1463298887)
 2. Install unraw from either source:
-   - Greasy Fork: https://greasyfork.org/scripts/unraw (updates handled by Greasy Fork)
+   - Greasy Fork: https://greasyfork.org/scripts/600316-unraw (updates handled by Greasy Fork)
    - GitHub: https://raw.githubusercontent.com/thangaram611/unraw/main/unraw.user.js (updates via `@updateURL`)
 
    Your manager opens an install dialog showing the full source. Read it; it is about 80 lines.
