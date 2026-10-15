@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>unraw · render GitHub HTML files, privately</title>
 <meta name="description" content="One click renders any .html file on GitHub in your browser. Works on private repositories you can read. No servers, no tokens.">
+<meta property="og:title" content="unraw · render GitHub HTML files, privately">
+<meta property="og:description" content="One click renders any .html file on GitHub in your browser. Works on private repositories you can read. No servers, no tokens.">
+<meta property="og:image" content="https://thangaram611.github.io/unraw/media/before-after.png">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root{--bg:#f6f8fa;--paper:#ffffff;--ink:#1f2328;--muted:#59636e;--line:#d1d9e0;--accent:#1f883d;--accent-ink:#ffffff;--blue:#0969da;--chip:#eef1f4}
   @media (prefers-color-scheme: dark){:root{--bg:#0d1117;--paper:#161b22;--ink:#e6edf3;--muted:#9198a1;--line:#30363d;--accent:#238636;--accent-ink:#ffffff;--blue:#4493f8;--chip:#21262d}}
@@ -12,7 +16,8 @@
   body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
   main{max-width:720px;margin:0 auto;padding:48px 20px 80px}
   h1{font-size:40px;margin:0 0 6px;letter-spacing:-.02em}
-  .tag{color:var(--muted);font-size:18px;margin:0 0 32px;max-width:60ch}
+  .tag{color:var(--muted);font-size:18px;margin:0 0 24px;max-width:60ch}
+  .demo{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:12px;margin:0 0 32px}
   h2{font-size:20px;margin:40px 0 8px}
   p{margin:8px 0;max-width:66ch}
   .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:14px 0}
@@ -41,6 +46,7 @@
 <main>
   <h1>unraw</h1>
   <p class="tag">Un-raw your GitHub HTML files. One click renders any <code>.html</code> file on GitHub in your browser, privately. Works on private repositories you can read, on any branch. No servers, no tokens, nothing leaves your browser.</p>
+  <img class="demo" src="media/demo.gif" width="1000" height="595" alt="One click: the unraw button beside Raw opens the rendered page in a new tab" loading="lazy">
 
   <div class="card primary">
     <h2 style="margin-top:0">Install in one move: the bookmarklet</h2>

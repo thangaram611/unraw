@@ -4,6 +4,8 @@
 
 Install page: **https://thangaram611.github.io/unraw/**
 
+![One click: the unraw button beside Raw opens the rendered page in a new tab](docs/media/demo.gif)
+
 ## Why unraw exists
 
 GitHub shows HTML files as source. Every existing way around that either works only on public repositories, or makes your private file pass through a third party:
@@ -40,6 +42,8 @@ Three ways, pick one:
 ## Use
 
 Open any `.html` file on GitHub. With the userscript, an **unraw** button appears next to **Raw**; with the bookmarklet, click the bookmark. Either way the rendered page opens in a new tab. Works on every branch, commit and tag, and in every repository your account can read.
+
+![The unraw button beside Raw on a GitHub file page](docs/media/button.png)
 
 ## How it works
 
